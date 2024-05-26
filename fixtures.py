@@ -27,7 +27,12 @@ def logged_in(chrome_browser):
     LoginPage(chrome_browser, url).open().login(login, password)
     yield chrome_browser
 
+@pytest.fixture(scope='session')
+def logged_adm(logged_in):
+    AppsPage(chrome_browser).login_to_app('adm')
+    yield chrome_browser
+
 @pytest.fixture
-def logged_adm(chrome_browser, logged_in):
-    AppsPage(chrome_browser).login_adm()
+def logged_projects(chrome_browser, logged_in):
+    AppsPage(chrome_browser).login_to_projects()
     yield chrome_browser

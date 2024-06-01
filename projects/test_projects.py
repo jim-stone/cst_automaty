@@ -1,4 +1,4 @@
-from fixtures import chrome_browser,logged_in
+from conftest import chrome_browser,logged_in
 from projects.pages.projects_list import ProjectsListPage
 from sso.pages import AppsPage
 

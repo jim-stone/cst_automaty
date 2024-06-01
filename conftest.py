@@ -5,9 +5,8 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from sso.pages import LoginPage, AppsPage
+from utils import ENV_NAME
 
-# change this constant to run tests in a different environment
-ENV_NAME = 'release'
 load_dotenv(find_dotenv(f'.env.{ENV_NAME}'))
 
 
@@ -28,11 +27,11 @@ def logged_in(chrome_browser):
     yield chrome_browser
 
 @pytest.fixture(scope='session')
-def logged_adm(logged_in):
+def logged_adm(chrome_browser, logged_in):
     AppsPage(chrome_browser).login_to_app('adm')
     yield chrome_browser
 
 @pytest.fixture
 def logged_projects(chrome_browser, logged_in):
-    AppsPage(chrome_browser).login_to_projects()
+    AppsPage(chrome_browser).login_to_app('projects')
     yield chrome_browser

@@ -1,7 +1,7 @@
 import os
 import time
 
-from fixtures import chrome_browser, logged_in, logged_adm
+# from conftest import chrome_browser, logged_in, logged_adm
 from sso.pages import LoginPage, AppsPage
 
 

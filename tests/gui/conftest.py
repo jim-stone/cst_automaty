@@ -4,8 +4,8 @@ from dotenv import load_dotenv, find_dotenv
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from sso.pages import LoginPage, AppsPage
-from utils import ENV_NAME
+from .sso.pages import LoginPage, AppsPage
+from tests.config import ENV_NAME
 
 load_dotenv(find_dotenv(f'.env.{ENV_NAME}'))
 

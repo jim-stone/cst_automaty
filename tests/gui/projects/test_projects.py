@@ -1,6 +1,4 @@
-from conftest import chrome_browser,logged_in
-from projects.pages.projects_list import ProjectsListPage
-from sso.pages import AppsPage
+from ..sso.pages import AppsPage
 
 
 def test_can_see_projects_list(chrome_browser, logged_in):

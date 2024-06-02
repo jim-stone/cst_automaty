@@ -1,5 +1,5 @@
 import pytest
-from sso.pages import AppsPage
+from ..sso.pages import AppsPage
 
 
 @pytest.fixture

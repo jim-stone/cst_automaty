@@ -2,8 +2,8 @@ import os
 import pytest
 import requests
 from dotenv import load_dotenv, find_dotenv
-from templates.slownik import basic_with_positions
-from utils import ENV_NAME
+from .templates.slownik import basic_with_positions
+from ..config import ENV_NAME
 
 load_dotenv(find_dotenv(f'.env.{ENV_NAME}'))
 PROJECTS_PWD = 'FESW.01.01'

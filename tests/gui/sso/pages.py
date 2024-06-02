@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from utils import AbstractBasePage
-from projects.pages.projects_list import ProjectsListPage
+from ..utils import AbstractBasePage
+from tests.gui.projects.pages.projects_list import ProjectsListPage
 
 class LoginPage(AbstractBasePage):
     input_login = (By.CSS_SELECTOR, '#login')

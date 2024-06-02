@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from utils import AbstractBasePage
+from ...utils import AbstractBasePage
+
 
 
 class ProjectsListPage(AbstractBasePage):

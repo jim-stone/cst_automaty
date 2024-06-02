@@ -1,6 +1,6 @@
 import requests
-from mwd.conftest import url_version
-from mwd.conftest import PROJECTS_PWD
+from ..conftest import url_version
+from ..conftest import PROJECTS_PWD
 
 def test_can_read_api_version(base_api_url):
     response = requests.post(base_api_url + url_version)

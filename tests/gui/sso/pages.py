@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from ..utils import AbstractBasePage
 from tests.gui.projects.pages.projects_list import ProjectsListPage
+from ..adm.pages.adm_landing import AdmLandingPage
+
 
 class LoginPage(AbstractBasePage):
     input_login = (By.CSS_SELECTOR, '#login')
@@ -36,7 +38,7 @@ class AppsPage(AbstractBasePage):
         'adm': 'Administracja',
         'wod': 'WOD2021',
         'projects': 'Projekty',
-        'controls': 'eKontrole'
+        'ekon': 'eKontrole'
     }
 
 
@@ -48,7 +50,7 @@ class AppsPage(AbstractBasePage):
 
     def login_to_app(self, app_name):
         """
-        :param app_name: adm, wod, projects, controls
+        :param app_name: adm, wod, projects, ekon
         :return: None
         """
         self.wait.until(EC.presence_of_all_elements_located(self.buttons_apps))
@@ -58,3 +60,5 @@ class AppsPage(AbstractBasePage):
         target_element.click()
         if target_name == 'Projekty':
             return ProjectsListPage(self.browser)
+        if target_name == 'Administracja':
+            return AdmLandingPage(self.browser)

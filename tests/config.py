@@ -2,3 +2,5 @@
 # supported environments: release
 
 ENV_NAME = 'release'
+
+PROJECT_NUMBER = 'FESW.01.01-IZ.00-AC50/22'

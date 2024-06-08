@@ -2,6 +2,7 @@ import os
 import pytest
 from dotenv import load_dotenv, find_dotenv
 from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from .sso.pages import LoginPage, AppsPage
@@ -12,8 +13,11 @@ load_dotenv(find_dotenv(f'.env.{ENV_NAME}'))
 
 @pytest.fixture(scope='session')
 def chrome_browser():
+    options = Options()
+    if os.getenv('IS_HEADLESS'):
+        options.add_argument('--headless')
     service = Service(ChromeDriverManager().install())
-    browser = Chrome(service=service)
+    browser = Chrome(service=service, options=options)
     browser.set_window_size(1920, 1080)
     yield browser
     browser.quit()

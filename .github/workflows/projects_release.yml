@@ -20,8 +20,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; 
     - name: Test with pytest
       env:
-        LOGIN1: ${{secrets.ReleaseLogin1}}
-        FULLNAME1: ${{secrets.ReleaseFullname1}}
+        LOGIN1: ${{secrets.LOGIN1}}
+        FULLNAME1: ${{secrets.FULLNAME1}}
         PASS1: ${{secrets.ReleasePass1}}
         START_URL: ${{secrets.ReleaseStartUrl}}
       run: |

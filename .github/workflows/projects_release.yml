@@ -28,5 +28,4 @@ jobs:
         FULLNAME1: ${{secrets.FULLNAME1}}
         PASS1: ${{secrets.ReleasePass1}}
         START_URL: ${{secrets.ReleaseStartUrl}}
-      run: |
-        pytest tests/gui/projects
+      run: pytest tests/gui/projects

@@ -14,7 +14,7 @@ load_dotenv(find_dotenv(f'.env.{ENV_NAME}'))
 @pytest.fixture(scope='session')
 def chrome_browser():
     options = Options()
-    if os.getenv('IS_HEADLESS'):
+    if os.getenv('IS_HEADLESS') == 'true':
         options.add_argument('--headless')
     service = Service(ChromeDriverManager().install())
     browser = Chrome(service=service, options=options)

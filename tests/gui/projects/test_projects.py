@@ -9,8 +9,7 @@ def test_can_see_projects_list(logged_projects):
 
 def test_can_filter_list(logged_projects):
     page = logged_projects.filter_to_one_project()
-    page.click_burger_on_project()
-    time.sleep(3)
-    page.click_burger_menu_item()
-    time.sleep(10)
+    time.sleep(4) #semms like previous click not finished and covers next
+    page.click_burger_on_project().navigate_to_project_details()
+    time.sleep(6)
     assert 1 == 1

@@ -1,6 +1,8 @@
 import os
 import pytest
 import requests
+import random
+import string
 from dotenv import load_dotenv, find_dotenv
 from .templates.slownik import basic_with_positions
 from ..config import ENV_NAME
@@ -11,6 +13,11 @@ url_token = 'api/Token'
 url_version = 'api/Wersja'
 url_slownik = 'api/Slownik'
 url_projects = 'api/Projekt'
+
+
+def generate_random_string(length):
+    characters = string.ascii_uppercase + string.digits
+    return ''.join(random.choice(characters) for _ in range(length))
 
 
 def repeat_request_while_pages_left(url, req_data, resp_key):
@@ -59,4 +66,23 @@ def all_projects_in_pwd(base_api_url, token):
         'strona': 1}
     return repeat_request_while_pages_left(
         url=req_url, req_data=req_data, resp_key='projekty')
+
+class ProjectGenerator():
+    def __init__(self, base_list_of_projects):
+        self.projects = base_list_of_projects
+        self.numbers = [p['numer'] for p in self.projects]
+        self.string_generator = generate_random_string
+    def _create_unique_project_number(self):
+        unique_parts = [n[-7:-3] for n in self.numbers]
+        new_unique_number_part = self.string_generator(4)
+        while new_unique_number_part in unique_parts:
+            new_unique_number_part = self.string_generator(4)
+        new_project_number = self.projects[0]['numer'].replace(unique_parts[0], new_unique_number_part)
+        print(new_project_number)
+        return new_project_number
+    def _find_base_project_data_with_agreement(self):
+        projects_with_agreements = [
+            p for p in self.projects if p['status'] == 'UmowaPodpisana'
+        ]
+
 
